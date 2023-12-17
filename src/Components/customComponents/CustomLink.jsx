@@ -1,12 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const CustomLink = ({ to, src, title, open }) => {
+  const route = useLocation();
+
   return (
     <Link
       to={to}
       className={`flex gap-x-4 my-3 items-center cursor-pointer text-gray-300 hover:bg-light-white rounded text-sm ${
         !open && "tooltip tooltip-right"
-      }`}
+      } ${to === route.pathname ? "bg-light-white" : ""}`}
       data-tip={title}
     >
       <img src={src} alt={title} className="w-6 pl-1" />
