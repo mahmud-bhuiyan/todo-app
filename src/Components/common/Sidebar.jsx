@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { arrow, logo } from "../../assets/images";
-import CustomLogo from "../customComponents/CustomLogo";
+import CustomSidebarLogo from "./CustomSidebarLogo";
 import { navLinks } from "./NavLinks";
-import CustomLink from "../customComponents/CustomLink";
+import CustomLink from "./CustomLink";
 
 const Sidebar = () => {
   const [open, setOpen] = useState(true);
@@ -22,8 +22,14 @@ const Sidebar = () => {
         onClick={() => setOpen(!open)}
       />
 
-      {/* Logo Link */}
-      <CustomLogo to="/" src={logo} alt="logo" text="DailyDocket" open={open} />
+      {/* Logo */}
+      <CustomSidebarLogo
+        to="/"
+        src={logo}
+        alt="logo"
+        text="DailyDocket"
+        open={open}
+      />
 
       {/* nav links */}
       <ul className="pt-4">

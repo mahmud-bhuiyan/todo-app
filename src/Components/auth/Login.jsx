@@ -1,10 +1,11 @@
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
 import { logo } from "../../assets/images";
 import CustomInput from "../form/CustomInput";
-import { customButtonStyle } from "../customComponents/CustomButtonStyle";
+import { customButtonStyle } from "../form/CustomButtonStyle";
 import { toast } from "react-toastify";
+import CustomFormLogo from "../form/CustomFormLogo";
+import AuthPrompt from "../form/AuthPrompt";
 
 const Login = () => {
   const {
@@ -30,14 +31,12 @@ const Login = () => {
               <div className="g-0 lg:flex lg:flex-wrap">
                 {/* Left column container */}
                 <div className="p-4 md:px-0 lg:w-6/12">
-                  <div className="md:mx-6 md:p-12">
+                  <div className="md:mx-6 md:p-6">
                     {/* Logo */}
-                    <div className="text-center">
-                      <img className="mx-auto w-16" src={logo} alt="logo" />
-                      <h4 className="mb-10 mt-3 pb-1 text-xl font-semibold">
-                        We are The DailyDocket Team
-                      </h4>
-                    </div>
+                    <CustomFormLogo
+                      logoSrc={logo}
+                      text="We are DailyDocket TeamThe "
+                    />
 
                     <form onSubmit={handleSubmit(onSubmit)}>
                       <p className="mb-4 text-center">
@@ -92,14 +91,11 @@ const Login = () => {
                       </div>
 
                       {/* Register button */}
-                      <div className="flex items-center justify-center pb-6">
-                        <p className="mb-0 mr-2">
-                          Don&lsquo;t have an account?
-                        </p>
-                        <Link to="/register" className={`${customButtonStyle}`}>
-                          Register
-                        </Link>
-                      </div>
+                      <AuthPrompt
+                        text="New here? Create an account"
+                        name="REGISTER"
+                        link="/register"
+                      />
                     </form>
                   </div>
                 </div>

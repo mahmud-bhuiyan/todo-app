@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const CustomLogo = ({ to, src, alt, text, open }) => {
+const CustomSidebarLogo = ({ to, src, alt, text, open }) => {
   return (
     <Link to={to} className="flex gap-x-2 items-center cursor-pointer">
       <img
@@ -21,4 +21,4 @@ const CustomLogo = ({ to, src, alt, text, open }) => {
   );
 };
 
-export default CustomLogo;
+export default CustomSidebarLogo;
