@@ -1,23 +1,68 @@
 import { Helmet } from "react-helmet-async";
-import { useForm } from "react-hook-form";
-import { logo } from "../../assets/images";
-import CustomInput from "../form/CustomInput";
-import { customButtonStyle } from "../form/CustomButtonStyle";
-import { toast } from "react-toastify";
 import CustomFormLogo from "../form/CustomFormLogo";
-import AuthPrompt from "../form/AuthPrompt";
+import { logo } from "../../assets/images";
+import CustomForm from "../form/CustomForm";
+import { toast } from "react-toastify";
 
 const Login = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
   const onSubmit = (data) => {
     console.log(data);
-    toast.success("Login Successful");
+    toast.success("Logged In Successful");
   };
+
+  const formFields = [
+    {
+      type: "text",
+      name: "username",
+      placeholder: "Username",
+      validation: {
+        required: "Username is required",
+      },
+    },
+    {
+      type: "email",
+      name: "email",
+      placeholder: "Email",
+      validation: {
+        required: "Email is required",
+        pattern: {
+          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+          message: "Invalid email address",
+        },
+      },
+    },
+    {
+      type: "date",
+      name: "date",
+      validation: {
+        required: "Date is required",
+      },
+    },
+    {
+      type: "password",
+      name: "password",
+      placeholder: "Password",
+      validation: {
+        required: "Password is required",
+        minLength: {
+          value: 6,
+          message: "Password must be at least 6 characters",
+        },
+        maxLength: {
+          value: 20,
+          message: "Password can not be more than 20 characters",
+        },
+      },
+    },
+    {
+      type: "textarea",
+      name: "description",
+      placeholder: "Description",
+      validation: {
+        required: "Description is required",
+      },
+    },
+  ];
 
   return (
     <section className="max-w-screen-2xl mx-auto">
@@ -37,66 +82,16 @@ const Login = () => {
                       logoSrc={logo}
                       text="We are DailyDocket TeamThe "
                     />
-
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                      <p className="mb-4 text-center">
-                        Please login to your account
-                      </p>
-                      {/* email input */}
-                      <CustomInput
-                        type="text"
-                        name="email"
-                        // label="Email"
-                        placeholder="Email"
-                        register={register}
-                        errors={errors}
-                        validation={{
-                          required: "Email is required",
-                          pattern: {
-                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                            message: "Invalid email address",
-                          },
-                        }}
-                      />
-
-                      {/* Password input */}
-                      <CustomInput
-                        type="password"
-                        name="password"
-                        // label="Password"
-                        placeholder="Password"
-                        register={register}
-                        errors={errors}
-                        validation={{
-                          required: "Password is required",
-                          minLength: {
-                            value: 6,
-                            message: "Password must be at least 6 characters",
-                          },
-                          maxLength: {
-                            value: 20,
-                            message:
-                              "Password can not be more than 20 characters",
-                          },
-                        }}
-                      />
-
-                      {/* Submit button */}
-                      <div className="mb-10 text-center">
-                        <input
-                          type="submit"
-                          value="Log in"
-                          className={`w-full mt-2 ${customButtonStyle}`}
-                        />
-                      </div>
-
-                      {/* Register button */}
-                      <AuthPrompt
-                        text="New here? Create an account"
-                        name="REGISTER"
-                        link="/register"
-                      />
-                    </form>
+                    {/* Render CustomForm component */}
+                    <CustomForm
+                      formTitle="Please login to your account"
+                      onSubmit={onSubmit}
+                      formFields={formFields}
+                      formButton="login"
+                      bottomText="New here? Create an account"
+                      bottomTitle="REGISTER"
+                      bottomLink="/register"
+                    />
                   </div>
                 </div>
 
