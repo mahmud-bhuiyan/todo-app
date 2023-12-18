@@ -13,10 +13,10 @@ const Login = () => {
   const formFields = [
     {
       type: "text",
-      name: "username",
-      placeholder: "Username",
+      name: "name",
+      placeholder: "name",
       validation: {
-        required: "Username is required",
+        required: "name is required",
       },
     },
     {
@@ -61,6 +61,13 @@ const Login = () => {
       validation: {
         required: "Description is required",
       },
+    },
+    {
+      type: "select",
+      name: "status",
+      label: "Your Select Label",
+      placeholder: "Select an option",
+      options: ["Pending", "Processing", "Complete"],
     },
   ];
 

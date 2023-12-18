@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
-import CustomInput from "./CustomInput";
 import CustomTextarea from "./CustomTextarea";
-// import CustomSelect from "./CustomSelect";
+import CustomSelect from "./CustomSelect";
+import CustomInput from "./CustomInput";
 import { customButtonStyle } from "./CustomButtonStyle";
 import AuthPrompt from "./AuthPrompt";
 
@@ -36,17 +36,17 @@ const CustomForm = ({
                 validation={field.validation}
               />
             );
-          // case "select":
-          //   return (
-          //     <CustomSelect
-          //       key={field.name}
-          //       name={field.name}
-          //       options={field.options}
-          //       register={register}
-          //       errors={errors}
-          //       validation={field.validation}
-          //     />
-          //   );
+          case "select":
+            return (
+              <CustomSelect
+                key={field.name}
+                name={field.name}
+                options={field.options}
+                register={register}
+                errors={errors}
+                validation={field.validation}
+              />
+            );
           default:
             return (
               <CustomInput
