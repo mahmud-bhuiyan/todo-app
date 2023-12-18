@@ -63,7 +63,7 @@ const CustomForm = ({
       })}
 
       {/* Submit button */}
-      <div className="mb-10 text-center">
+      <div className="mb-8 text-center">
         <input
           type="submit"
           value={formButton}

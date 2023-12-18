@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 const Register = () => {
   const onSubmit = (data) => {
     console.log(data);
-    toast.success("Logged In Successful");
+    toast.success("Account Created Successfully");
   };
 
   const formFields = [
@@ -70,8 +70,8 @@ const Register = () => {
       <Helmet>
         <title>Login | DailyDocket</title>
       </Helmet>
-      <div className="h-screen bg-[#B4E4FF] p-3 sm:p-10">
-        <div className="g-6 flex h-full flex-wrap items-center justify-center">
+      <div className="h-screen bg-[#B4E4FF] sm:px-52">
+        <div className="flex h-full flex-wrap items-center justify-center">
           <div className="w-full">
             <div className="block rounded-lg bg-white shadow-lg">
               <div className="g-0 lg:flex lg:flex-wrap">

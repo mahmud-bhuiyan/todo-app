@@ -12,14 +12,6 @@ const Login = () => {
 
   const formFields = [
     {
-      type: "text",
-      name: "name",
-      placeholder: "name",
-      validation: {
-        required: "name is required",
-      },
-    },
-    {
       type: "email",
       name: "email",
       placeholder: "Email",
@@ -29,13 +21,6 @@ const Login = () => {
           value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
           message: "Invalid email address",
         },
-      },
-    },
-    {
-      type: "date",
-      name: "date",
-      validation: {
-        required: "Date is required",
       },
     },
     {
@@ -54,21 +39,6 @@ const Login = () => {
         },
       },
     },
-    {
-      type: "textarea",
-      name: "description",
-      placeholder: "Description",
-      validation: {
-        required: "Description is required",
-      },
-    },
-    {
-      type: "select",
-      name: "status",
-      label: "Your Select Label",
-      placeholder: "Select an option",
-      options: ["Pending", "Processing", "Complete"],
-    },
   ];
 
   return (
@@ -76,8 +46,8 @@ const Login = () => {
       <Helmet>
         <title>Login | DailyDocket</title>
       </Helmet>
-      <div className="h-screen bg-[#B4E4FF] p-3 sm:p-10">
-        <div className="g-6 flex h-full flex-wrap items-center justify-center">
+      <div className="h-screen bg-[#B4E4FF] p-3 sm:py-6 sm:px-52">
+        <div className="flex h-full flex-wrap items-center justify-center">
           <div className="w-full">
             <div className="block rounded-lg bg-white shadow-lg">
               <div className="g-0 lg:flex lg:flex-wrap">
