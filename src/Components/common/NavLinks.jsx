@@ -16,4 +16,9 @@ export const navLinks = [
     src: user,
     to: "/users/profile",
   },
+  {
+    title: "Login",
+    src: user,
+    to: "/login",
+  },
 ];
