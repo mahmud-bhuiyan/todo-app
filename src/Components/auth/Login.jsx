@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { logo } from "../../assets/images";
 import CustomInput from "../form/CustomInput";
+import { customButtonStyle } from "../customComponents/CustomButtonStyle";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const {
@@ -13,6 +15,7 @@ const Login = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+    toast.success("Login Successful");
   };
 
   return (
@@ -20,7 +23,7 @@ const Login = () => {
       <Helmet>
         <title>Login | DailyDocket</title>
       </Helmet>
-      <div className="h-full bg-[#B4E4FF] p-3 sm:p-10">
+      <div className="h-screen bg-[#B4E4FF] p-3 sm:p-10">
         <div className="g-6 flex h-full flex-wrap items-center justify-center">
           <div className="w-full">
             <div className="block rounded-lg bg-white shadow-lg">
@@ -80,11 +83,11 @@ const Login = () => {
                       />
 
                       {/* Submit button */}
-                      <div className="mb-12 pb-1 pt-1 text-center">
+                      <div className="mb-10 text-center">
                         <input
                           type="submit"
                           value="Log in"
-                          className="uppercase bg-gradient-to-r from-orange-500 via-red-600 to-[#b44593] text-white w-full mt-2 px-4 py-2 rounded-md hover:from-orange-600 hover:to-purple-700 focus:outline-none focus:shadow-outline-blue active:from-orange-800 active:to-purple-900"
+                          className={`w-full mt-2 ${customButtonStyle}`}
                         />
                       </div>
 
@@ -93,10 +96,7 @@ const Login = () => {
                         <p className="mb-0 mr-2">
                           Don&lsquo;t have an account?
                         </p>
-                        <Link
-                          to="/register"
-                          className="uppercase bg-gradient-to-r from-orange-500 via-red-600 to-[#b44593] text-white px-4 py-2 rounded-md hover:from-orange-600 hover:to-purple-700 focus:outline-none focus:shadow-outline-blue active:from-orange-800 active:to-purple-900"
-                        >
+                        <Link to="/register" className={`${customButtonStyle}`}>
                           Register
                         </Link>
                       </div>
@@ -114,13 +114,12 @@ const Login = () => {
                 >
                   <div className="px-4 py-6 text-white md:mx-6 md:p-12">
                     <h4 className="mb-6 text-xl font-semibold">
-                      We are more than just a company
+                      Welcome to DailyDocket!
                     </h4>
                     <p className="text-sm">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                      Organize your day and boost your productivity with
+                      DailyDocket. Easily manage your tasks, set priorities, and
+                      stay on top of your to-do list.
                     </p>
                   </div>
                 </div>
