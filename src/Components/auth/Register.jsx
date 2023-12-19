@@ -5,8 +5,14 @@ import CustomForm from "../form/CustomForm";
 import { toast } from "react-toastify";
 import { RegisterFormFields } from "./RegisterFormFields";
 import { registerUser } from "../../services/api/User";
+import { useContext } from "react";
+import { UserContext } from "../../Context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const { setUser } = useContext(UserContext);
+  const navigate = useNavigate();
+
   const onSubmit = async (data) => {
     if (data.password !== data.confirmPassword) {
       toast.warning("Password does not match!");
@@ -20,9 +26,16 @@ const Register = () => {
       confirmPassword: data.confirmPassword,
     };
 
-    const response = await registerUser(userData);
-    // console.log(response);
-    toast.success("Account Created Successfully");
+    try {
+      const response = await registerUser(userData);
+      if (response && response.user && response.user._id !== "") {
+        toast.success(response.message);
+        setUser(response.user);
+        navigate("/");
+      }
+    } catch (error) {
+      toast.error(error);
+    }
   };
 
   return (

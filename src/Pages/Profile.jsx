@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
+import { UserContext } from "../Context/UserContext";
 
 const Profile = () => {
+  const { user } = useContext(UserContext);
+
   return (
     <div className="max-w-md mx-auto my-8 p-8 bg-white rounded shadow-md text-center">
       <Helmet>
@@ -9,8 +13,8 @@ const Profile = () => {
       <h2 className="text-2xl font-semibold mb-4 uppercase">User Profile</h2>
 
       <div className="mb-8">
-        <p className="mb-2 font-semibold">Name:</p>
-        <p className="mb-2 font-semibold">Email</p>
+        <p className="mb-2 text-lg font-semibold">Name: {user?.name}</p>
+        <p className="mb-2 text-lg font-semibold">Email: {user?.email}</p>
       </div>
 
       <div className="flex flex-col space-y-4">

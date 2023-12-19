@@ -4,11 +4,33 @@ import { logo } from "../../assets/images";
 import CustomForm from "../form/CustomForm";
 import { toast } from "react-toastify";
 import { LoginFormFields } from "./LoginFormFields";
+import { useContext } from "react";
+import { UserContext } from "../../Context/UserContext";
+import { useNavigate } from "react-router-dom";
+import { loginUser } from "../../services/api/User";
 
 const Login = () => {
-  const onSubmit = (data) => {
-    console.log(data);
-    toast.success("Logged In Successful");
+  const { setUser } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const onSubmit = async (data) => {
+    const userData = {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+      confirmPassword: data.confirmPassword,
+    };
+
+    try {
+      const response = await loginUser(userData);
+      if (response && response.user && response.user._id !== "") {
+        toast.success(response.message);
+        setUser(response.user);
+        navigate("/");
+      }
+    } catch (error) {
+      toast.error(error);
+    }
   };
 
   return (
