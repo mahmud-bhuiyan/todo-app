@@ -1,17 +1,14 @@
 import { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { UserContext } from "../Context/UserContext";
+import Loader from "./Loader";
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(UserContext);
   const location = useLocation();
 
   if (loading) {
-    return (
-      <div className="w-full h-[300px] flex justify-center items-center">
-        <h3>Loading ...</h3>
-      </div>
-    );
+    return <Loader />;
   }
 
   if (user?.email) {

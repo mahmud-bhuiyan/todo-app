@@ -15,7 +15,7 @@ const MainLayout = () => {
         const currentUser = await getUserProfile();
         setUser(currentUser.user);
       } catch (error) {
-        console.error("Error fetching user profile:", error);
+        console.error("Error fetching user profile");
       } finally {
         setLoading(false);
       }
