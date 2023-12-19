@@ -5,6 +5,8 @@ import ErrorPage from "../Pages/ErrorPage";
 import Login from "../Components/auth/Login";
 import Register from "../Components/auth/Register";
 import Profile from "../Pages/Profile";
+import PrivateRoute from "../Components/PrivateRoute";
+import PublicRoute from "../Components/PublicRoute";
 
 const router = createBrowserRouter([
   {
@@ -14,19 +16,35 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: (
+          <PrivateRoute>
+            <Home />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/users/profile",
-        element: <Profile />,
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/users/login",
-        element: <Login />,
+        element: (
+          <PublicRoute>
+            <Login />
+          </PublicRoute>
+        ),
       },
       {
         path: "/users/register",
-        element: <Register />,
+        element: (
+          <PublicRoute>
+            <Register />
+          </PublicRoute>
+        ),
       },
     ],
   },

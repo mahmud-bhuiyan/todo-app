@@ -6,15 +6,22 @@ import { UserContext } from "../Context/UserContext";
 import { getUserProfile } from "../services/api/User";
 
 const MainLayout = () => {
-  const { setUser } = useContext(UserContext);
+  const { setUser, setLoading } = useContext(UserContext);
 
   useEffect(() => {
     const fetchData = async () => {
-      const currentUser = await getUserProfile();
-      setUser(currentUser.user);
+      try {
+        setLoading(true);
+        const currentUser = await getUserProfile();
+        setUser(currentUser.user);
+      } catch (error) {
+        console.error("Error fetching user profile:", error);
+      } finally {
+        setLoading(false);
+      }
     };
     fetchData();
-  }, [setUser]);
+  }, [setUser, setLoading]);
 
   const location = useLocation();
   const noNavigation =
