@@ -3,70 +3,30 @@ import CustomFormLogo from "../form/CustomFormLogo";
 import { logo } from "../../assets/images";
 import CustomForm from "../form/CustomForm";
 import { toast } from "react-toastify";
+import { RegisterFormFields } from "./RegisterFormFields";
+import { registerUser } from "../../services/api/User";
 
 const Register = () => {
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    if (data.password !== data.confirmPassword) {
+      toast.warning("Password does not match!");
+      return;
+    }
+
+    const userData = {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+      confirmPassword: data.confirmPassword,
+    };
+
+    const response = await registerUser(userData);
+    // console.log(response);
     toast.success("Account Created Successfully");
   };
 
-  const formFields = [
-    {
-      type: "text",
-      name: "name",
-      placeholder: "name",
-      validation: {
-        required: "name is required",
-      },
-    },
-    {
-      type: "email",
-      name: "email",
-      placeholder: "Email",
-      validation: {
-        required: "Email is required",
-        pattern: {
-          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-          message: "Invalid email address",
-        },
-      },
-    },
-    {
-      type: "password",
-      name: "password",
-      placeholder: "Password",
-      validation: {
-        required: "Password is required",
-        minLength: {
-          value: 6,
-          message: "Password must be at least 6 characters",
-        },
-        maxLength: {
-          value: 20,
-          message: "Password can not be more than 20 characters",
-        },
-      },
-    },
-    {
-      type: "password",
-      name: "confirmPassword",
-      placeholder: "Confirm Password",
-      validation: {
-        required: "Confirm Password is required",
-        minLength: {
-          value: 6,
-          message: "Password must be at least 6 characters",
-        },
-        maxLength: {
-          value: 20,
-          message: "Password can not be more than 20 characters",
-        },
-      },
-    },
-  ];
-
   return (
-    <section className="max-w-screen-2xl mx-auto">
+    <div className="max-w-screen-2xl mx-auto">
       <Helmet>
         <title>Login | DailyDocket</title>
       </Helmet>
@@ -77,7 +37,7 @@ const Register = () => {
               <div className="g-0 lg:flex lg:flex-wrap">
                 {/* Left column container */}
                 <div
-                  className="flex items-center text-center lg:rounded-l-lg rounded-t-lg lg:rounded-tr-none lg:w-6/12 p-2 sm:p-16"
+                  className="flex items-center text-center lg:rounded-l-lg rounded-t-lg lg:rounded-tr-none lg:w-6/12 p-2 sm:p-6"
                   style={{
                     background:
                       "linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)",
@@ -107,11 +67,11 @@ const Register = () => {
                     <CustomForm
                       formTitle="New here? Create an account"
                       onSubmit={onSubmit}
-                      formFields={formFields}
+                      formFields={RegisterFormFields}
                       formButton="register"
                       bottomText="Already have an account? Please"
                       bottomTitle="login"
-                      bottomLink="/login"
+                      bottomLink="/users/login"
                     />
                   </div>
                 </div>
@@ -120,7 +80,7 @@ const Register = () => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

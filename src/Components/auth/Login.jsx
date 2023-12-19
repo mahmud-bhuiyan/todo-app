@@ -3,6 +3,7 @@ import CustomFormLogo from "../form/CustomFormLogo";
 import { logo } from "../../assets/images";
 import CustomForm from "../form/CustomForm";
 import { toast } from "react-toastify";
+import { LoginFormFields } from "./LoginFormFields";
 
 const Login = () => {
   const onSubmit = (data) => {
@@ -10,43 +11,12 @@ const Login = () => {
     toast.success("Logged In Successful");
   };
 
-  const formFields = [
-    {
-      type: "email",
-      name: "email",
-      placeholder: "Email",
-      validation: {
-        required: "Email is required",
-        pattern: {
-          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-          message: "Invalid email address",
-        },
-      },
-    },
-    {
-      type: "password",
-      name: "password",
-      placeholder: "Password",
-      validation: {
-        required: "Password is required",
-        minLength: {
-          value: 6,
-          message: "Password must be at least 6 characters",
-        },
-        maxLength: {
-          value: 20,
-          message: "Password can not be more than 20 characters",
-        },
-      },
-    },
-  ];
-
   return (
-    <section className="max-w-screen-2xl mx-auto">
+    <div className="max-w-screen-2xl mx-auto">
       <Helmet>
         <title>Login | DailyDocket</title>
       </Helmet>
-      <div className="h-screen bg-[#B4E4FF] p-3 sm:py-6 sm:px-52">
+      <div className="h-screen bg-[#B4E4FF] p-3 sm:py-6 sm:px-20 md:px-52">
         <div className="flex h-full flex-wrap items-center justify-center">
           <div className="w-full">
             <div className="block rounded-lg bg-white shadow-lg">
@@ -63,18 +33,18 @@ const Login = () => {
                     <CustomForm
                       formTitle="Please login to your account"
                       onSubmit={onSubmit}
-                      formFields={formFields}
+                      formFields={LoginFormFields}
                       formButton="login"
                       bottomText="New here? Create an account"
                       bottomTitle="REGISTER"
-                      bottomLink="/register"
+                      bottomLink="/users/register"
                     />
                   </div>
                 </div>
 
                 {/* Right column container*/}
                 <div
-                  className="flex items-center text-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none p-2 sm:p-16"
+                  className="flex items-center text-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none p-2 sm:p-6"
                   style={{
                     background:
                       "linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)",
@@ -96,7 +66,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

@@ -19,6 +19,6 @@ export const navLinks = [
   {
     title: "Login",
     src: user,
-    to: "/login",
+    to: "/users/login",
   },
 ];
