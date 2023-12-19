@@ -37,3 +37,17 @@ export const loginUser = async (credentials) => {
     throw error.response.data.msg;
   }
 };
+
+// =============================================
+//                     logout
+// =============================================
+export const logoutUser = async () => {
+  try {
+    // Clear the token from localStorage
+    localStorage.removeItem("userToken");
+    return { success: true };
+  } catch (error) {
+    console.error("Error:", error.response.data.msg);
+    throw error.response.data.msg;
+  }
+};

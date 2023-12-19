@@ -12,6 +12,7 @@ export const UserContextProvider = ({ children }) => {
     loading,
     setLoading,
   };
+
   return (
     <UserContext.Provider value={authInfo}>{children}</UserContext.Provider>
   );
