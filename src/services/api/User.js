@@ -14,8 +14,8 @@ export const registerUser = async (user) => {
     // console.log(response.data);
     return response.data;
   } catch (error) {
-    console.error("Error:", error.response.data.msg);
-    throw error.response.data.msg;
+    console.error("Error:", error.response?.data?.msg);
+    throw error.response?.data?.msg;
   }
 };
 
@@ -33,8 +33,8 @@ export const loginUser = async (credentials) => {
     // console.log(response.data);
     return response.data;
   } catch (error) {
-    console.error("Error:", error.response.data.msg);
-    throw error.response.data.msg;
+    console.error("Error:", error.response?.data?.msg);
+    throw error.response?.data?.msg;
   }
 };
 
@@ -43,12 +43,17 @@ export const loginUser = async (credentials) => {
 // =============================================
 export const logoutUser = async () => {
   try {
+    // Simulate an asynchronous operation
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
     // Clear the token from localStorage
     localStorage.removeItem("userToken");
+
+    // Return a success status
     return { success: true };
   } catch (error) {
-    console.error("Error:", error.response.data.msg);
-    throw error.response.data.msg;
+    console.error("Error:", error.response?.data?.msg || "Logout failed");
+    throw error.response?.data?.msg || "Logout failed";
   }
 };
 
@@ -60,7 +65,7 @@ export const getUserProfile = async () => {
     const response = await axiosSecure.get("/users/me");
     return response.data;
   } catch (error) {
-    console.error("Error:", error.response.data.msg);
-    throw error.response.data.msg;
+    console.error("Error:", error.response?.data?.msg);
+    throw error.response?.data?.msg;
   }
 };

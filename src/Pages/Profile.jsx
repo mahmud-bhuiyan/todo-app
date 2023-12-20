@@ -1,6 +1,6 @@
+import { Helmet } from "react-helmet-async";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { UserContext } from "../Context/UserContext";
 import { logoutUser } from "../services/api/User";
 import { toast } from "react-toastify";
@@ -14,7 +14,8 @@ const Profile = () => {
       await logoutUser();
       navigate("/users/login");
     } catch (error) {
-      toast.error(error);
+      console.error("Logout failed:", error);
+      toast.error(error.message || "Logout failed");
     }
   };
 
@@ -31,18 +32,6 @@ const Profile = () => {
       </div>
 
       <div className="flex flex-col space-y-4">
-        {/* <Link
-          to="/user/update-profile"
-          className="btn btn-sm btn-info text-white"
-        >
-          Update Profile
-        </Link>
-        <Link
-          to="/user/update-password"
-          className="btn btn-sm btn-success text-white"
-        >
-          Update Password
-        </Link> */}
         <button className="btn btn-sm btn-info text-white">
           Update Profile
         </button>
