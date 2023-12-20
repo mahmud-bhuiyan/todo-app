@@ -78,10 +78,23 @@ export const updateUserProfile = async (updatedUserData) => {
     const response = await axiosSecure.patch("/users/update", updatedUserData);
     return response.data;
   } catch (error) {
-    console.error(
-      "Error updating user profile. Error_Status:",
-      error.response.status
+    console.error("Error:", error.response?.data?.msg);
+    throw error.response?.data?.msg;
+  }
+};
+
+// =============================================
+//                 update password
+// =============================================
+export const updateUserPassword = async (passwordData) => {
+  try {
+    const response = await axiosSecure.patch(
+      "/users/updatePassword",
+      passwordData
     );
-    throw error;
+    return response.data;
+  } catch (error) {
+    console.error("Error:", error.response?.data?.msg);
+    throw error.response?.data?.msg;
   }
 };

@@ -8,6 +8,7 @@ import Profile from "../Pages/Profile";
 import PrivateRoute from "../Components/PrivateRoute";
 import PublicRoute from "../Components/PublicRoute";
 import UpdateProfile from "../Components/user/UpdateProfile";
+import UpdatePassword from "../Components/user/UpdatePassword";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <UpdateProfile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/users/update/password",
+        element: (
+          <PrivateRoute>
+            <UpdatePassword />
           </PrivateRoute>
         ),
       },

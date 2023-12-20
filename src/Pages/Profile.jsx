@@ -22,9 +22,12 @@ const Profile = () => {
         <Link to="/users/update" className="btn btn-sm btn-info text-white">
           Update Profile
         </Link>
-        <button className="btn btn-sm btn-success text-white">
+        <Link
+          to="/users/update/password"
+          className="btn btn-sm btn-success text-white"
+        >
           Update Password
-        </button>
+        </Link>
       </div>
     </div>
   );
