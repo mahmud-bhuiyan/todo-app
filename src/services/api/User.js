@@ -69,3 +69,19 @@ export const getUserProfile = async () => {
     throw error.response?.data?.msg;
   }
 };
+
+// =============================================
+//                   update user
+// =============================================
+export const updateUserProfile = async (updatedUserData) => {
+  try {
+    const response = await axiosSecure.patch("/users/update", updatedUserData);
+    return response.data;
+  } catch (error) {
+    console.error(
+      "Error updating user profile. Error_Status:",
+      error.response.status
+    );
+    throw error;
+  }
+};

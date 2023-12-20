@@ -1,23 +1,10 @@
 import { Helmet } from "react-helmet-async";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { UserContext } from "../Context/UserContext";
-import { logoutUser } from "../services/api/User";
-import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
-  const navigate = useNavigate();
   const { user } = useContext(UserContext);
-
-  const handleLogout = async () => {
-    try {
-      await logoutUser();
-      navigate("/users/login");
-    } catch (error) {
-      console.error("Logout failed:", error);
-      toast.error(error.message || "Logout failed");
-    }
-  };
 
   return (
     <div className="max-w-md mx-auto my-8 p-8 bg-white rounded shadow-md text-center">
@@ -32,17 +19,11 @@ const Profile = () => {
       </div>
 
       <div className="flex flex-col space-y-4">
-        <button className="btn btn-sm btn-info text-white">
+        <Link to="/users/update" className="btn btn-sm btn-info text-white">
           Update Profile
-        </button>
+        </Link>
         <button className="btn btn-sm btn-success text-white">
           Update Password
-        </button>
-        <button
-          className="btn btn-sm btn-error text-white"
-          onClick={handleLogout}
-        >
-          Logout
         </button>
       </div>
     </div>

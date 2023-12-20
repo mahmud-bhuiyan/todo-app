@@ -7,6 +7,7 @@ import Register from "../Components/auth/Register";
 import Profile from "../Pages/Profile";
 import PrivateRoute from "../Components/PrivateRoute";
 import PublicRoute from "../Components/PublicRoute";
+import UpdateProfile from "../Components/user/UpdateProfile";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Profile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/users/update",
+        element: (
+          <PrivateRoute>
+            <UpdateProfile />
           </PrivateRoute>
         ),
       },
