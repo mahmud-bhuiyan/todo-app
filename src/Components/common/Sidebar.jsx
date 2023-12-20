@@ -32,7 +32,7 @@ const Sidebar = () => {
       />
 
       {/* nav links */}
-      <ul className="pt-4">
+      <ul className="pl-1 pt-4">
         {navLinks.map((link, index) => (
           <li key={index}>
             {/* Custom nav links */}

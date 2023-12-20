@@ -1,8 +1,8 @@
 import arrow from "./arrow.png";
 import complete from "./complete.png";
+import demo_user from "./demo_user.png";
 import logo from "./logo.png";
 import notes from "./notes.png";
 import sadEmoji from "./sadEmoji.png";
-import user from "./user.png";
 
-export { arrow, complete, logo, notes, sadEmoji, user };
+export { arrow, complete, demo_user, logo, notes, sadEmoji };

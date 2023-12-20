@@ -1,32 +1,21 @@
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "../Components/common/Sidebar";
 import Navbar from "../Components/common/Navbar";
 import { UserContext } from "../Context/UserContext";
-import { getUserProfile } from "../services/api/User";
+import Loader from "../Components/Loader";
 
 const MainLayout = () => {
-  const { setUser, setLoading } = useContext(UserContext);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const currentUser = await getUserProfile();
-        setUser(currentUser.user);
-      } catch (error) {
-        console.error("Error fetching user profile");
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, [setUser, setLoading]);
+  const { loading } = useContext(UserContext);
 
   const location = useLocation();
   const noNavigation =
     location.pathname.includes("login") ||
     location.pathname.includes("register");
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div className="max-w-screen-2xl mx-auto bg-[#B4E4FF] flex">

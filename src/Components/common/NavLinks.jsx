@@ -1,4 +1,4 @@
-import { complete, notes, user } from "../../assets/images";
+import { complete, notes } from "../../assets/images";
 
 export const navLinks = [
   {
@@ -10,15 +10,5 @@ export const navLinks = [
     title: "Complete",
     src: complete,
     to: "/tasks/complete",
-  },
-  {
-    title: "Profile",
-    src: user,
-    to: "/users/profile",
-  },
-  {
-    title: "Login",
-    src: user,
-    to: "/users/login",
   },
 ];
