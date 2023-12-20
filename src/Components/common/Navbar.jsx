@@ -7,6 +7,9 @@ import { toast } from "react-toastify";
 
 const Navbar = () => {
   const { user } = useContext(UserContext);
+  const userName = user?.name;
+  const firstName = userName ? userName.split(" ")[0] : "";
+
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -20,14 +23,15 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-green-100 py-3 mb-8">
+    <div className="navbar bg-green-100 py-3">
       <div className="navbar-start"></div>
-      <div className="navbar-center">
+      <div className="navbar-center hidden sm:flex mx-2">
         <Link to="/" className=" text-xl sm:text-2xl">
           DailyDocket
         </Link>
       </div>
       <div className="navbar-end">
+        <h3 className="text-sm mr-1 capitalize">Welcome, {firstName}</h3>
         <div className="dropdown dropdown-end">
           <div
             tabIndex={0}

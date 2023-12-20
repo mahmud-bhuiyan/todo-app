@@ -29,7 +29,9 @@ const MainLayout = () => {
             <Navbar />
 
             {/* outlet */}
-            <Outlet />
+            <div className="p-2">
+              <Outlet />
+            </div>
           </div>
         </>
       )}
