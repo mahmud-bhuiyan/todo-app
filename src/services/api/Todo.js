@@ -13,3 +13,17 @@ export const createTodo = async (taskDetails) => {
     throw error.response?.data?.msg;
   }
 };
+
+// =============================================
+//                Get Todos for User
+// =============================================
+export const getUserTodos = async () => {
+  try {
+    const response = await axiosSecure.get("/tasks/");
+
+    return response.data;
+  } catch (error) {
+    console.error(error.response?.data?.msg);
+    throw error.response?.data?.msg;
+  }
+};
