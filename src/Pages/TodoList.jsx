@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import { TodoContext } from "../Context/TodoContext";
 import Loader from "../Components/Loader";
 import TodoItems from "../Components/todo/TodoItems";
+import CustomFormInput from "../Components/todo/CustomFormInput";
 
 const TodoList = () => {
   const { todos, setTodos, loading } = useContext(TodoContext);
@@ -89,66 +90,36 @@ const TodoList = () => {
         <div className="modal-box p-4 mx-auto my-20 bg-white rounded-md shadow-md max-w-md">
           <h3 className="font-bold text-lg">Create Todo</h3>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="pt-2">
-              <label
-                htmlFor="title"
-                className="block mb-1 text-sm font-medium text-gray-700"
-              >
-                Title
-              </label>
-              <input
-                type="text"
-                id="title"
-                className="body-large mb-0 flex h-10 w-full rounded-md border border-input bg-[#F6F2F7] px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-[#78767A] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-[#C8C5CA] disabled:cursor-not-allowed disabled:opacity-50"
-                {...register("title", { required: "Title is required" })}
-              />
-              {errors.title && (
-                <p className="text-red-500 text-sm">{errors.title.message}</p>
-              )}
-            </div>
+            <CustomFormInput
+              label="Title"
+              type="text"
+              id="title"
+              register={register}
+              name="title"
+              error={errors.title}
+              maxLength={50}
+              placeholder="Enter title here"
+            />
 
-            <div className="pt-2">
-              <label
-                htmlFor="description"
-                className="block mb-1 text-sm font-medium text-gray-700"
-              >
-                Description
-              </label>
-              <textarea
-                id="description"
-                className="body-large mb-0 flex h-20 w-full rounded-md border border-input bg-[#F6F2F7] px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-[#78767A] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-[#C8C5CA] disabled:cursor-not-allowed disabled:opacity-50"
-                {...register("description", {
-                  required: "Description is required",
-                })}
-              />
-              {errors.description && (
-                <span className="text-red-500 text-sm ">
-                  {errors.description.message}
-                </span>
-              )}
-            </div>
+            <CustomFormInput
+              label="Description"
+              type="textarea"
+              id="description"
+              register={register}
+              name="description"
+              error={errors.description}
+              maxLength={100}
+              placeholder="Enter description here"
+            />
 
-            <div className="pt-2">
-              <label
-                htmlFor="dueDate"
-                className="block mb-1 text-sm font-medium text-gray-700"
-              >
-                Due Date
-              </label>
-              <input
-                type="date"
-                id="dueDate"
-                className="body-large mb-0 flex h-10 w-full rounded-md border border-input bg-[#F6F2F7] px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-[#78767A] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-[#C8C5CA] disabled:cursor-not-allowed disabled:opacity-50"
-                {...register("dueDate", {
-                  required: "Due Date is required",
-                })}
-              />
-              {errors.dueDate && (
-                <span className="text-red-500 text-sm">
-                  {errors.dueDate.message}
-                </span>
-              )}
-            </div>
+            <CustomFormInput
+              label="Due Date"
+              type="date"
+              id="dueDate"
+              register={register}
+              name="dueDate"
+              error={errors.dueDate}
+            />
 
             <div className="modal-action">
               <button

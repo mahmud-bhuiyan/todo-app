@@ -50,6 +50,11 @@ const TodoItems = ({ todo, index }) => {
                   {status}
                 </span>
               )}
+              {status === "Completed" && (
+                <span className="text-sm text-slate-700 badge badge-success">
+                  {status}
+                </span>
+              )}
             </h4>
             <span className="flex gap-2 pt-3">
               {actionTodo ? (

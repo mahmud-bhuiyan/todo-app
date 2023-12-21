@@ -1,7 +1,12 @@
-import { FaRegTrashAlt } from "react-icons/fa";
-import { formatDate } from "../utils/FormatDate";
+// import { FaRegTrashAlt } from "react-icons/fa";
+// import { formatDate } from "../../utils/FormatDate";
+// import { useContext } from "react";
+// import { TodoContext } from "../../Context/TodoContext";
+
 import { useContext } from "react";
-import { TodoContext } from "../Context/TodoContext";
+import { TodoContext } from "../../Context/TodoContext";
+import { FaRegTrashAlt } from "react-icons/fa";
+import { formatDate } from "../../utils/FormatDate";
 
 const CompleteTodo = ({ todo }) => {
   const { handleDelete } = useContext(TodoContext);

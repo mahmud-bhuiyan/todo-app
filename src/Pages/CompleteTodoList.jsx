@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { TodoContext } from "../Context/TodoContext";
 import { Helmet } from "react-helmet-async";
 import Loader from "../Components/Loader";
-import CompleteTodo from "./CompleteTodo";
+import CompleteTodo from "../Components/todo/CompleteTodo";
 
 const CompleteTodoList = () => {
   const { todos, loading } = useContext(TodoContext);
@@ -18,7 +18,7 @@ const CompleteTodoList = () => {
   return (
     <div className="">
       <Helmet>
-        <title>Dashboard | TODO</title>
+        <title>Completed | DailyDocket</title>
       </Helmet>
 
       <h2 className="text-2xl font-semibold text-center mb-3">
@@ -30,14 +30,14 @@ const CompleteTodoList = () => {
           <Loader />
         </div>
       ) : (
-        <div className="overflow-x-auto bg-white rounded-md">
-          <table className="table text-center">
+        <div className="grid grid-cols-1 overflow-x-auto bg-white rounded-md">
+          <table className="table text-center w-full ">
             <thead>
               <tr className="font-bold bg-[#95BDFF] text-white">
-                <th className="py-2 px-4 border">Title</th>
-                <th className="py-2 px-4 border">Description</th>
-                <th className="py-2 px-4 border">Due Date</th>
-                <th className="py-2 px-4 border">Actions</th>
+                <th className="py-2 px-4 border  w-[30%]">Title</th>
+                <th className="py-2 px-4 border  w-[30%]">Description</th>
+                <th className="py-2 px-4 border  w-[15%]">Due Date</th>
+                <th className="py-2 px-4 border  w-[15%]">Actions</th>
               </tr>
             </thead>
             <tbody>
