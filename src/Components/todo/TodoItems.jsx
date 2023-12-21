@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import { TodoContext } from "../../Context/TodoContext";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
+import { getDynamicBackgroundColor } from "../DynamicCardBGColor";
 
 const TodoItems = ({ todo, index }) => {
   const { _id, title, description, dueDate, status } = todo;
@@ -42,21 +43,6 @@ const TodoItems = ({ todo, index }) => {
     });
   };
 
-  const getDynamicBackgroundColor = (index) => {
-    const colors = [
-      "bg-green-200",
-      "bg-yellow-200",
-      "bg-pink-200",
-      "bg-purple-200",
-      "bg-orange-200",
-      "bg-red-200",
-      "bg-teal-200",
-      "bg-indigo-200",
-      "bg-gray-200",
-    ];
-    return colors[index % colors.length];
-  };
-
   return (
     <div
       className={`w-full shadow-md rounded-md 
@@ -68,10 +54,7 @@ const TodoItems = ({ todo, index }) => {
             {title}
           </h1>
           <span className="flex gap-2">
-            <FaEdit
-              // onClick={handleEdit}
-              className="cursor-pointer mb-2"
-            />
+            <FaEdit onClick={handleEdit(_id)} className="cursor-pointer mb-2" />
             <FaRegTrashAlt
               onClick={() => handleDelete(_id)}
               className="cursor-pointer"
