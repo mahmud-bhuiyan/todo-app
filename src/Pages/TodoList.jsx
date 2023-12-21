@@ -86,7 +86,7 @@ const TodoList = () => {
 
       {/* create todo */}
       <dialog id="custom_modal" open={isModalOpen} className="modal">
-        <div className="modal-box">
+        <div className="modal-box p-4 mx-auto my-20 bg-white rounded-md shadow-md max-w-md">
           <h3 className="font-bold text-lg">Create Todo</h3>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="pt-2">

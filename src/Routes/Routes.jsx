@@ -9,6 +9,7 @@ import PrivateRoute from "../Components/PrivateRoute";
 import PublicRoute from "../Components/PublicRoute";
 import UpdateProfile from "../Components/user/UpdateProfile";
 import UpdatePassword from "../Components/user/UpdatePassword";
+import CompleteTodoList from "../Pages/CompleteTodoList";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <TodoList />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/todos/complete",
+        element: (
+          <PrivateRoute>
+            <CompleteTodoList />
           </PrivateRoute>
         ),
       },

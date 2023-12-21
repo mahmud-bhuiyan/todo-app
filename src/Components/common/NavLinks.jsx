@@ -9,6 +9,6 @@ export const navLinks = [
   {
     title: "Complete",
     src: complete,
-    to: "/tasks/complete",
+    to: "/todos/complete",
   },
 ];
