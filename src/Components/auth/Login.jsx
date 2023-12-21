@@ -27,9 +27,11 @@ const Login = () => {
         toast.success(response.message);
         setUser(response.user);
         navigate("/");
+        window.location.reload();
       }
     } catch (error) {
       toast.error(error);
+      console.log(error);
     }
   };
 
