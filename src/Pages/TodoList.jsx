@@ -73,7 +73,7 @@ const TodoList = () => {
           <Loader />
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 overflow-x-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 overflow-x-auto">
           {todos.length !== 0 ? (
             todos.map((todo, index) => (
               <TodoItems key={todo._id} todo={todo} index={index} />
