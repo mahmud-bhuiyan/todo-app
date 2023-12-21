@@ -1,10 +1,7 @@
 import { useContext, useState } from "react";
-import { toast } from "react-toastify";
 import { formatDate } from "../../utils/FormatDate";
 import { FaEdit, FaRegTrashAlt } from "react-icons/fa";
-import { deleteTodo } from "../../services/api/Todo";
 import { TodoContext } from "../../Context/TodoContext";
-import Swal from "sweetalert2";
 import { getDynamicBackgroundColor } from "../DynamicCardBGColor";
 import EditTodoModal from "./EditTodoModal";
 
@@ -14,33 +11,7 @@ const TodoItems = ({ todo, index }) => {
   const { setTodos } = useContext(TodoContext);
   const [actionTodo, setActionTodo] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-
-  const handleDelete = async (todoId) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        try {
-          setActionTodo(true);
-          const response = await deleteTodo(todoId);
-
-          // when deletion is successful, update the state
-          setTodos((prevTodos) =>
-            prevTodos.filter((todo) => todo._id !== todoId)
-          );
-          toast.success(response.message);
-        } catch (error) {
-          toast.error("An error occurred!");
-          console.log(error);
-        }
-      }
-    });
-  };
+  const { handleDelete } = useContext(TodoContext);
 
   const handleEdit = () => {
     setIsEditModalOpen(true);

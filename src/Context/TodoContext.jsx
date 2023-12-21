@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
-import { getUserTodos } from "../services/api/Todo";
+import { deleteTodo, getUserTodos } from "../services/api/Todo";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 export const TodoContext = createContext({ todo: {}, setTodo: () => {} });
 
@@ -24,11 +25,38 @@ export const TodoContextProvider = ({ children }) => {
     fetchTodos();
   }, []);
 
+  const handleDelete = async (todoId) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const response = await deleteTodo(todoId);
+
+          // when deletion is successful, update the state
+          setTodos((prevTodos) =>
+            prevTodos.filter((todo) => todo._id !== todoId)
+          );
+          toast.success(response.message);
+        } catch (error) {
+          toast.error("An error occurred!");
+          console.log(error);
+        }
+      }
+    });
+  };
+
   const todoInfo = {
     todos,
     setTodos,
     loading,
     setLoading,
+    handleDelete,
   };
 
   return (
