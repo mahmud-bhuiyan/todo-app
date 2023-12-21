@@ -4,13 +4,12 @@ import { createTodo } from "../services/api/Todo";
 import { useContext, useState } from "react";
 import { TodoContext } from "../Context/TodoContext";
 import Loader from "../Components/Loader";
-import { formatDate } from "../utils/FormatDate";
+import Todo from "../Components/todo/Todo";
 
 const TodoList = () => {
   const { todos, setTodos, loading } = useContext(TodoContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newTodo, setNewTodo] = useState(false);
-  console.log(todos);
 
   const {
     register,
@@ -88,11 +87,10 @@ const TodoList = () => {
             <tbody>
               {todos.length !== 0 ? (
                 todos.map((todo) => (
-                  <tr key={todo._id}>
-                    <td>{todo.title}</td>
-                    <td>{todo.description}</td>
-                    <td>{formatDate(todo.dueDate)}</td>
-                  </tr>
+                  <Todo
+                    key={todo._id}
+                    todo={todo}
+                  />
                 ))
               ) : (
                 <tr>
