@@ -47,8 +47,8 @@ const CompleteTodoList = () => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="5">
-                    <p className="text-white">No completed todos available.</p>
+                  <td colSpan="4">
+                    <p>No completed todos available.</p>
                   </td>
                 </tr>
               )}
