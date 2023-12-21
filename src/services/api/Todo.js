@@ -37,6 +37,7 @@ export const deleteTodo = async (todoId) => {
 
     return response.data;
   } catch (error) {
+    // console.log(error);
     console.error(error.response?.data?.msg);
     throw error.response?.data?.msg;
   }

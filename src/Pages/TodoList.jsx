@@ -4,7 +4,7 @@ import { createTodo } from "../services/api/Todo";
 import { useContext, useState } from "react";
 import { TodoContext } from "../Context/TodoContext";
 import Loader from "../Components/Loader";
-import Todo from "../Components/todo/Todo";
+import TodoItems from "../Components/todo/TodoItems";
 
 const TodoList = () => {
   const { todos, setTodos, loading } = useContext(TodoContext);
@@ -73,34 +73,14 @@ const TodoList = () => {
           <Loader />
         </div>
       ) : (
-        <div className="max-w-screen-lg overflow-x-auto">
-          <table className="table text-center">
-            <thead>
-              <tr className="text-white font-semibold">
-                <th className="py-2 px-4 border">Title</th>
-                <th className="py-2 px-4 border">Description</th>
-                <th className="py-2 px-4 border">Due Date</th>
-                <th className="py-2 px-4 border">Completed</th>
-                <th className="py-2 px-4 border">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {todos.length !== 0 ? (
-                todos.map((todo) => (
-                  <Todo
-                    key={todo._id}
-                    todo={todo}
-                  />
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="5">
-                    <p className="text-white">No todos available.</p>
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 overflow-x-auto">
+          {todos.length !== 0 ? (
+            todos.map((todo, index) => (
+              <TodoItems key={todo._id} todo={todo} index={index} />
+            ))
+          ) : (
+            <p className="text-white">No todos available.</p>
+          )}
         </div>
       )}
 
