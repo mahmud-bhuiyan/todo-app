@@ -132,7 +132,12 @@ const EditTodoModal = ({ isOpen, onClose, todo, onEdit }) => {
 
           {/* Status */}
           <div className="mb-4">
-            <label className="block text-gray-600">Status:</label>
+            <label
+              htmlFor="dueDate"
+              className="block mb-1 text-sm font-medium text-gray-700"
+            >
+              Status
+            </label>
             <select
               className="body-large mb-0 flex h-10 w-full rounded-md border border-input bg-[#F6F2F7] px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-[#78767A] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-[#C8C5CA] disabled:cursor-not-allowed disabled:opacity-50"
               {...register("status", {
