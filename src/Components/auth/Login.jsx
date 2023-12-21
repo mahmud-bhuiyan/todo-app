@@ -24,7 +24,7 @@ const Login = () => {
     try {
       const response = await loginUser(userData);
       if (response && response.user && response.user._id !== "") {
-        toast.success(response.message);
+        // toast.success(response.message);
         setUser(response.user);
         navigate("/");
         window.location.reload();

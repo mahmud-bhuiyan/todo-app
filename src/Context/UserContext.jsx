@@ -14,7 +14,7 @@ export const UserContextProvider = ({ children }) => {
         const currentUser = await getUserProfile();
         setUser(currentUser.user);
       } catch (error) {
-        console.error("Please Login/Register");
+        console.log("null");
       } finally {
         setLoading(false);
       }

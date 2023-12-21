@@ -29,9 +29,10 @@ const Register = () => {
     try {
       const response = await registerUser(userData);
       if (response && response.user && response.user._id !== "") {
-        toast.success(response.message);
+        // toast.success(response.message);
         setUser(response.user);
         navigate("/");
+        window.location.reload();
       }
     } catch (error) {
       toast.error(error);
