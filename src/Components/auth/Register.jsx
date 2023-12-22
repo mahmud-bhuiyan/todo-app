@@ -42,7 +42,7 @@ const Register = () => {
   return (
     <div className="max-w-screen-2xl mx-auto">
       <Helmet>
-        <title>Login | DailyDocket</title>
+        <title>Register | DailyDocket</title>
       </Helmet>
       <div className="h-screen bg-[#B4E4FF] sm:px-52">
         <div className="flex h-full flex-wrap items-center justify-center">

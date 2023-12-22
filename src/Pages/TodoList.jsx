@@ -6,11 +6,13 @@ import { TodoContext } from "../Context/TodoContext";
 import Loader from "../Components/Loader";
 import TodoItems from "../Components/todo/TodoItems";
 import CustomFormInput from "../Components/todo/CustomFormInput";
+import { Helmet } from "react-helmet-async";
 
 const TodoList = () => {
   const { todos, setTodos, loading } = useContext(TodoContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newTodo, setNewTodo] = useState(false);
+  const [sortOption, setSortOption] = useState("Sort By Created DESC");
 
   const {
     register,
@@ -57,16 +59,60 @@ const TodoList = () => {
     reset();
   };
 
+  // Sorting function based on the selected option
+  const sortTodos = (option) => {
+    switch (option) {
+      case "Sort By Created ASC":
+        return [...todos].sort(
+          (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+        );
+      case "Sort By Created DESC":
+        return [...todos].sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        );
+      case "Sort By Due Date ASC":
+        return [...todos].sort(
+          (a, b) => new Date(a.dueDate) - new Date(b.dueDate)
+        );
+      case "Sort By Due Date DESC":
+        return [...todos].sort(
+          (a, b) => new Date(b.dueDate) - new Date(a.dueDate)
+        );
+      default:
+        return todos;
+    }
+  };
+
+  // Handle sorting option change
+  const handleSortChange = (e) => {
+    setSortOption(e.target.value);
+  };
+
   return (
     <>
-      <div className="text-center py-3 md:py-5 mb-3 bg-white rounded">
-        <h3 className="text-sm sm:text-base md:text-xl mb-2">Todo List</h3>
-        <button
-          className="btn btn-sm btn-accent text-white"
-          onClick={() => setIsModalOpen(true)}
+      <Helmet>
+        <title>Dashboard | DailyDocket</title>
+      </Helmet>
+      <div>
+        <div className="text-center py-3 md:py-5 mb-3 bg-white rounded">
+          <h3 className="text-sm sm:text-base md:text-xl mb-2">Todo List</h3>
+          <button
+            className="btn btn-sm btn-accent text-white"
+            onClick={() => setIsModalOpen(true)}
+          >
+            Create Todo
+          </button>
+        </div>
+        <select
+          className="select select-bordered select-sm w-full max-w-[200px] mb-2"
+          value={sortOption}
+          onChange={handleSortChange}
         >
-          Create Todo
-        </button>
+          <option value="Sort By Created ASC">Sort By Created ASC</option>
+          <option value="Sort By Created DESC">Sort By Created DESC</option>
+          <option value="Sort By Due Date ASC">Sort By Due Date ASC</option>
+          <option value="Sort By Due Date DESC">Sort By Due Date DESC</option>
+        </select>
       </div>
 
       {loading ? (
@@ -75,13 +121,11 @@ const TodoList = () => {
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 overflow-x-auto">
-          {todos.length !== 0 ? (
-            todos.map((todo, index) => (
+          {sortTodos(sortOption)
+            .filter((todo) => todo.status !== "Completed")
+            .map((todo, index) => (
               <TodoItems key={todo._id} todo={todo} index={index} />
-            ))
-          ) : (
-            <p className="text-white">No todos available.</p>
-          )}
+            ))}
         </div>
       )}
 

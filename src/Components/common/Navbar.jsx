@@ -12,13 +12,13 @@ const Navbar = () => {
 
   const navigate = useNavigate();
 
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Add state to track dropdown open/close
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleLogout = async () => {
     try {
       await logoutUser();
       window.location.reload();
-      setIsDropdownOpen(false); // Close the dropdown
+      setIsDropdownOpen(false);
       navigate("/users/login");
     } catch (error) {
       console.error("Logout failed:", error);
@@ -49,13 +49,13 @@ const Navbar = () => {
             tabIndex={0}
             role="button"
             className="btn btn-sm btn-ghost btn-circle border-2 border-slate-400 avatar"
-            onClick={toggleDropdown} 
+            onClick={toggleDropdown}
           >
             <div className="w-6 rounded-full">
               <img src={demo_user} alt="demo_user" />
             </div>
           </div>
-          {isDropdownOpen && ( 
+          {isDropdownOpen && (
             <ul
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
