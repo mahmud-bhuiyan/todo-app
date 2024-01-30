@@ -9,7 +9,7 @@ export const createTodo = async (taskDetails) => {
 
     return response.data;
   } catch (error) {
-    console.error(error.response?.data?.msg);
+    // console.error(error.response?.data?.msg);
     throw error.response?.data?.msg;
   }
 };
@@ -23,7 +23,7 @@ export const getUserTodos = async () => {
 
     return response.data;
   } catch (error) {
-    console.error(error.response?.data?.msg);
+    // console.error(error.response?.data?.msg);
     throw error.response?.data?.msg;
   }
 };
@@ -38,7 +38,7 @@ export const deleteTodo = async (todoId) => {
     return response.data;
   } catch (error) {
     // console.log(error);
-    console.error(error.response?.data?.msg);
+    // console.error(error.response?.data?.msg);
     throw error.response?.data?.msg;
   }
 };

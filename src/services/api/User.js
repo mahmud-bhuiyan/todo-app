@@ -14,7 +14,7 @@ export const registerUser = async (user) => {
     // console.log(response.data);
     return response.data;
   } catch (error) {
-    console.error("Error:", error.response?.data?.msg);
+    // console.error("Error:", error.response?.data?.msg);
     throw error.response?.data?.msg;
   }
 };
@@ -33,7 +33,7 @@ export const loginUser = async (credentials) => {
     // console.log(response.data);
     return response.data;
   } catch (error) {
-    console.error("Error:", error.response?.data?.msg);
+    // console.error("Error:", error.response?.data?.msg);
     throw error.response?.data?.msg;
   }
 };
@@ -65,7 +65,7 @@ export const getUserProfile = async () => {
     const response = await axiosSecure.get("/users/me");
     return response.data;
   } catch (error) {
-    console.error("Error:", error.response?.data?.msg);
+    // console.error("Error:", error.response?.data?.msg);
     throw error.response?.data?.msg;
   }
 };
@@ -78,7 +78,7 @@ export const updateUserProfile = async (updatedUserData) => {
     const response = await axiosSecure.patch("/users/update", updatedUserData);
     return response.data;
   } catch (error) {
-    console.error("Error:", error.response?.data?.msg);
+    // console.error("Error:", error.response?.data?.msg);
     throw error.response?.data?.msg;
   }
 };
@@ -94,7 +94,7 @@ export const updateUserPassword = async (passwordData) => {
     );
     return response.data;
   } catch (error) {
-    console.error("Error:", error.response?.data?.msg);
+    // console.error("Error:", error.response?.data?.msg);
     throw error.response?.data?.msg;
   }
 };

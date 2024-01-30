@@ -1,7 +1,6 @@
 import axios from "axios";
 
-// const apiURL = "http://localhost:3001/api/v1";
-const apiURL = "https://sji-task-manager-api.vercel.app/api/v1";
+const apiURL = import.meta.env.VITE_API_URL;
 
 export const axiosOpen = axios.create({
   baseURL: apiURL,
