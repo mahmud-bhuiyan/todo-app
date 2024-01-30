@@ -60,7 +60,7 @@ const EditTodoModal = ({ isOpen, onClose, todo, onEdit }) => {
       setValue("status", todo.status);
     }
   }, [isOpen, setValue, todo]);
-  console.log(todo);
+
   return (
     <dialog
       id="custom_modal"
