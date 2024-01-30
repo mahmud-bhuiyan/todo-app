@@ -135,7 +135,3 @@ To run the Task Management Frontend locally, follow these steps:
 - **Axios**
 - **React Hook Form**
 - **React Icons**
-
-## The END
-
-Many Thanks to `SJ Innovation` and `Project MearnifyU Team` For Your Support!
