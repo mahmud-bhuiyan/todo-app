@@ -29,7 +29,7 @@ export const TodoContextProvider = ({ children }) => {
       }
     };
     fetchTodos();
-  }, []);
+  }, [user?.email]);
 
   const handleDelete = async (todoId) => {
     Swal.fire({
